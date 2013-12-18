@@ -1,0 +1,48 @@
+name:                accelerate-blas
+version:             0.1.0.0
+synopsis:            Binding to the CUDA BLAS routines for Accelerate arrays
+description:         CUBLAS routines for Accelerate
+homepage:            http://github.com/alpmestan/accelerate-blas
+license:             BSD3
+license-file:        LICENSE
+author:              Alp Mestanogullari
+maintainer:          alpmestan@gmail.com
+copyright:           2013 Alp Mestanogullari
+category:            Math
+build-type:          Simple
+-- extra-source-files:  
+cabal-version:       >=1.10
+
+Flag cuda
+  Description:          Enable support for using CUBLAS via the CUDA backend's
+                        FFI
+  Default:              True
+
+library
+  exposed-modules:     Data.Array.Accelerate.BLAS,
+                       Data.Array.Accelerate.BLAS.Internal
+  -- other-extensions:    
+  build-depends:       base ==4.6.*, 
+                       accelerate == 0.14.*
+  if flag(cuda)
+    CPP-options:       -DACCELERATE_CUDA_BACKEND
+    build-depends:     accelerate-cuda == 0.14.*, 
+                       cublas == 0.1.*,
+                       cuda == 0.5.*
+
+  ghc-options:         -Wall -O2 -funbox-strict-fields -fwarn-tabs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable accelerate-blas-test
+  main-is:             accelerate-blas-test.hs
+  ghc-options:         -Wall -O2 -threaded -rtsopts -prof -fprof-auto -funbox-strict-fields -fwarn-tabs
+  build-depends:       base >= 4 && < 5, 
+                       accelerate == 0.14.*
+
+  if flag(cuda)					   
+    CPP-options:       -DACCELERATE_CUDA_BACKEND
+    build-depends:	   cublas == 0.1.*, 
+                       cuda == 0.5.*,
+                       accelerate-blas == 0.1.*, 
+                       accelerate-cuda == 0.14.*
