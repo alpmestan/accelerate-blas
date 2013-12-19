@@ -6,7 +6,7 @@ import Data.Array.Accelerate.BLAS
 import Prelude hiding (fst, snd)
 
 main :: IO ()
-main = print $ run1 f (v1, v2)
+main = print $ run1 f $ (v1, v2)
   where v1, v2 :: Array DIM1 Float
         !v1 = fromList (Z :. 10) [1..10]
         !v2 = fromList (Z :. 10) [1..10]
