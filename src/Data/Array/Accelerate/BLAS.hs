@@ -1,4 +1,5 @@
-module Data.Array.Accelerate.BLAS (cudaDPF) where
+module Data.Array.Accelerate.BLAS 
+  ( module Data.Array.Accelerate.BLAS.Level1 ) where
 
-import Data.Array.Accelerate.BLAS.Internal
+import Data.Array.Accelerate.BLAS.Level1
 
