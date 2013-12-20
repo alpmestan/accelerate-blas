@@ -1,7 +1,7 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE TypeFamilies #-}
 
-module Data.Array.Accelerate.BLAS.Common 
+module Data.Array.Accelerate.BLAS.Internal.Common 
   ( devVF
   , devVD
   , devSF
@@ -12,6 +12,10 @@ module Data.Array.Accelerate.BLAS.Common
 import Data.Array.Accelerate
 import Data.Array.Accelerate.CUDA.Foreign
 import Foreign.CUDA.Ptr
+
+import Prelude hiding (zipWith)
+import Control.Applicative ((<$>))
+import Data.Array.Accelerate
 
 devVF :: Vector Float -> CIO (DevicePtr Float)
 devVF v = devicePtrsOfArray v >>= \((), p) -> return p

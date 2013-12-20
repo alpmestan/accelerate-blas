@@ -21,7 +21,10 @@ Flag cuda
 library
   exposed-modules:     Data.Array.Accelerate.BLAS,
                        Data.Array.Accelerate.BLAS.Level1
-  -- other-extensions:    
+  other-modules:       Data.Array.Accelerate.BLAS.Internal.Dot,
+                       Data.Array.Accelerate.BLAS.Internal.Common,
+                       Data.Array.Accelerate.BLAS.Internal.Axpy
+   
   build-depends:       base ==4.6.*, 
                        accelerate == 0.14.*
   if flag(cuda)
