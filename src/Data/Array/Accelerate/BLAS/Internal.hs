@@ -38,6 +38,11 @@ cudaDotProductF (v1, v2) = do
     -- get the CUBLAS context (from my cublas binding)
     handle <- liftIO $ create
 
+    -- set the right pointer mode (we want pointers on the device)
+    -- TODO: do not execute this everytime, it should be done once
+    --       just like the handle
+    liftIO $ setPointerMode handle PointerModeDevice
+
     -- run the computation
     liftIO $ execute handle n v1ptr v2ptr outPtr
 
