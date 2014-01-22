@@ -39,7 +39,6 @@ cudaAsumD x = do
         execute h n xp rp =
             BL.dasum h n xp 1 rp
 
-{-# NOINLINE sasum #-}
 sasum :: Acc (Vector Float) -> Acc (Scalar Float)
 sasum = foreignAcc foreignAsumF pureAsumF
   where foreignAsumF = CUDAForeignAcc "cudaAsumF" cudaAsumF
@@ -47,7 +46,6 @@ sasum = foreignAcc foreignAsumF pureAsumF
         pureAsumF :: Acc (Vector Float) -> Acc (Scalar Float)
         pureAsumF = fold (+) 0 . map abs
 
-{-# NOINLINE dasum #-}
 dasum :: Acc (Vector Double) -> Acc (Scalar Double)
 dasum = foreignAcc foreignAsumD pureAsumD
   where foreignAsumD = CUDAForeignAcc "cudaAsumD" cudaAsumD
