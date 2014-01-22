@@ -24,7 +24,8 @@ library
   other-modules:       Data.Array.Accelerate.BLAS.Internal.Dot,
                        Data.Array.Accelerate.BLAS.Internal.Common,
                        Data.Array.Accelerate.BLAS.Internal.Axpy,
-                       Data.Array.Accelerate.BLAS.Internal.Asum
+                       Data.Array.Accelerate.BLAS.Internal.Asum,
+                       Data.Array.Accelerate.BLAS.Internal.Nrm2
    
   build-depends:       base ==4.6.*, 
                        accelerate == 0.14.*

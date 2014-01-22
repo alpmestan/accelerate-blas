@@ -23,6 +23,11 @@ main = do
     putStrLn "  asum (0, .., 9999)"
     print $ run1 dasum w2
 
+    putStrLn "-- Testing norm2"
+    putStrLn "  nrm2 (1, .., 10)"
+    print $ run1 snrm2 v1
+    putStrLn "  nrm2 (0, .., 9999)"
+    print $ run1 dnrm2 w2
 
   where v1, v2 :: Array DIM1 Float
         !v1 = fromList (Z :. 10) [1..10]

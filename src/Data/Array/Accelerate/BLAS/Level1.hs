@@ -13,6 +13,9 @@ module Data.Array.Accelerate.BLAS.Level1
     -- * Absolute sum of vector elements
   , sasum
   , dasum
+    -- Norm 2
+  , snrm2
+  , dnrm2
   ) where
 
 -- dot products
@@ -23,3 +26,6 @@ import Data.Array.Accelerate.BLAS.Internal.Axpy
 
 -- absolute sum of elements
 import Data.Array.Accelerate.BLAS.Internal.Asum
+
+-- norm 2
+import Data.Array.Accelerate.BLAS.Internal.Nrm2
