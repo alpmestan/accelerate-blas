@@ -23,7 +23,8 @@ library
                        Data.Array.Accelerate.BLAS.Level1
   other-modules:       Data.Array.Accelerate.BLAS.Internal.Dot,
                        Data.Array.Accelerate.BLAS.Internal.Common,
-                       Data.Array.Accelerate.BLAS.Internal.Axpy
+                       Data.Array.Accelerate.BLAS.Internal.Axpy,
+                       Data.Array.Accelerate.BLAS.Internal.Asum
    
   build-depends:       base ==4.6.*, 
                        accelerate == 0.14.*

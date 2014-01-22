@@ -17,6 +17,12 @@ main = do
     putStrLn "  0.5*(1, .., 10) + (0, .., 9)"
     print $ run1 h (half, v1, v2)
 
+    putStrLn "-- Testing asum"
+    putStrLn "  asum (1, .., 10)"
+    print $ run1 sasum v1
+    putStrLn "  asum (0, .., 9999)"
+    print $ run1 dasum w2
+
 
   where v1, v2 :: Array DIM1 Float
         !v1 = fromList (Z :. 10) [1..10]
