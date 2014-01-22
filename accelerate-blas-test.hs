@@ -29,6 +29,10 @@ main = do
     putStrLn "  nrm2 (0, .., 9999)"
     print $ run1 dnrm2 w2
 
+    putStrLn "-- Testing scal"
+    putStrLn "  scal 0.5 (1, .., 10)"
+    print $ run1 sc (half, v1)
+
   where v1, v2 :: Array DIM1 Float
         !v1 = fromList (Z :. 10) [1..10]
         !v2 = fromList (Z :. 10) [0..9]
@@ -48,3 +52,7 @@ g vs = let (v1, v2) = (fst vs, snd vs) :: (Acc (Vector Double), Acc (Vector Doub
 h :: Acc (Scalar Float, Vector Float, Vector Float) -> Acc (Vector Float)
 h as = let (s, v1, v2) = unlift as
        in saxpy s v1 v2
+
+sc :: Acc (Scalar Float, Vector Float) -> Acc (Vector Float)
+sc vs = let (scalar, vec) = unlift vs
+        in sscal scalar vec

@@ -25,7 +25,8 @@ library
                        Data.Array.Accelerate.BLAS.Internal.Common,
                        Data.Array.Accelerate.BLAS.Internal.Axpy,
                        Data.Array.Accelerate.BLAS.Internal.Asum,
-                       Data.Array.Accelerate.BLAS.Internal.Nrm2
+                       Data.Array.Accelerate.BLAS.Internal.Nrm2,
+                       Data.Array.Accelerate.BLAS.Internal.Scal
    
   build-depends:       base ==4.6.*, 
                        accelerate == 0.14.*
