@@ -42,6 +42,10 @@ cudaScalD (a, x) = do
         execute h n ap x'p =
             BL.dscal h n ap x'p 1
 
+-- | Scales the given vector (second argument) by the given scalar, for `Float`s.
+--   Morally equivalent to:
+--
+--   >>> map (*a) vec
 sscal :: Acc (Scalar Float) -> Acc (Vector Float) -> Acc (Vector Float)
 sscal a x = foreignAcc foreignScalF pureScalF $ lift (a,x)
   where foreignScalF = CUDAForeignAcc "cudaScalF" cudaScalF
@@ -51,6 +55,10 @@ sscal a x = foreignAcc foreignScalF pureScalF $ lift (a,x)
                            a'     = the a
                        in map (* a') x
 
+-- | Scales the given vector (second argument) by the given scalar, for `Double`s.
+--   Morally equivalent to:
+--
+--   >>> map (*a) vec
 dscal :: Acc (Scalar Double) -> Acc (Vector Double) -> Acc (Vector Double)
 dscal a x = foreignAcc foreignScalD pureScalD $ lift (a,x)
   where foreignScalD = CUDAForeignAcc "cudaScalD" cudaScalD

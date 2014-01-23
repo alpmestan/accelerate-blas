@@ -39,6 +39,10 @@ cudaNrm2D x = do
         execute h n xp rp =
             BL.dnrm2 h n xp 1 rp
 
+-- | Returns the 2-norm of the given vector of `Float`s.
+--   Equivalent to:
+--
+--   >>> sqrt . sum . map (\x -> x * x)
 snrm2 :: Acc (Vector Float) -> Acc (Scalar Float)
 snrm2 = foreignAcc foreignNrm2F pureNrm2F
   where foreignNrm2F = CUDAForeignAcc "cudaNrm2F" cudaNrm2F
@@ -46,6 +50,10 @@ snrm2 = foreignAcc foreignNrm2F pureNrm2F
         pureNrm2F :: Acc (Vector Float) -> Acc (Scalar Float)
         pureNrm2F = map sqrt . fold (+) 0 . map (\x -> x*x)
 
+-- | Returns the 2-norm of the given vector of `Double`s.
+--   Equivalent to:
+--
+--   >>> sqrt . sum . map (\x -> x * x)
 dnrm2 :: Acc (Vector Double) -> Acc (Scalar Double)
 dnrm2 = foreignAcc foreignNrm2D pureNrm2D
   where foreignNrm2D = CUDAForeignAcc "cudaNrm2D" cudaNrm2D
